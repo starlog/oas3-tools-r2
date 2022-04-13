@@ -24,11 +24,11 @@ export class ExpressAppConfig {
         this.routingOptions = appOptions.routing;
         this.setOpenApiValidatorOptions(definitionPath, appOptions);
 
-				// Create new express app only if not passed by options
+        // Create new express app only if not passed by options
         this.app = appOptions.app || express();
 
-    		this.app.use(cors(appOptions.cors));
-        
+        this.app.use(cors(appOptions.cors));
+
         const spec = fs.readFileSync(definitionPath, 'utf8');
         const swaggerDoc = jsyaml.safeLoad(spec);
 
@@ -68,16 +68,16 @@ export class ExpressAppConfig {
 
     public configureLogger(loggerOptions) {
         let format = 'dev';
-        let options:{} = {};
+        let options: {} = {};
 
         if (loggerOptions != undefined) {
-            if(loggerOptions.format != undefined
-                && typeof loggerOptions.format === 'string'){
-                    format = loggerOptions.format;
+            if (loggerOptions.format != undefined
+                && typeof loggerOptions.format === 'string') {
+                format = loggerOptions.format;
             }
-    
-            if(loggerOptions.errorLimit != undefined
-                && (typeof loggerOptions.errorLimit === 'string' || typeof loggerOptions.errorLimit === 'number')){
+
+            if (loggerOptions.errorLimit != undefined
+                && (typeof loggerOptions.errorLimit === 'string' || typeof loggerOptions.errorLimit === 'number')) {
                 options['skip'] = function (req, res) { return res.statusCode < parseInt(loggerOptions.errorLimit); };
             }
         }
