@@ -1,5 +1,5 @@
 {
-  "name": "@felix/oas3-tools",
+  "name": "@felixcho/oas3-tools",
   "version": "2.2.0",
   "description": "This is simply package update version of https://github.com/bug-hunters/oas3-tools",
   "main": "dist/index.js",
